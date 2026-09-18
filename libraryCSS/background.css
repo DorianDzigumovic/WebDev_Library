@@ -1,0 +1,7 @@
+body{
+    background-image: url("../media/TUDlibraryBackground.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top center;
+    background-size: cover;
+}

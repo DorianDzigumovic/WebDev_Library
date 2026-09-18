@@ -1,0 +1,450 @@
+/* TUDublin fonts */
+@font-face {
+    font-family: prophet-regular;
+    src: url("https://pxl01-tudublinie.terminalfour.net/prod01/tudublin-cdn-pxl/media/website/site-assets/css/fonts/Prophet-Regular.woff") format("woff"),url("https://pxl01-tudublinie.terminalfour.net/prod01/tudublin-cdn-pxl/media/website/site-assets/css/fonts/Prophet-Regular.woff2") format("woff2"),url("https://pxl01-tudublinie.terminalfour.net/prod01/tudublin-cdn-pxl/media/website/site-assets/css/fonts/Prophet-Regular.ttf") format("truetype");
+    font-display: swap
+}
+
+@font-face {
+    font-family: prophet-bold;
+    src: url("https://pxl01-tudublinie.terminalfour.net/prod01/tudublin-cdn-pxl/media/website/site-assets/css/fonts/Prophet-Bold.woff") format("woff"),url("https://pxl01-tudublinie.terminalfour.net/prod01/tudublin-cdn-pxl/media/website/site-assets/css/fonts/Prophet-Bold.woff2") format("woff2"),url("https://pxl01-tudublinie.terminalfour.net/prod01/tudublin-cdn-pxl/media/website/site-assets/css/fonts/Prophet-Bold.ttf") format("truetype");
+    font-display: swap
+}
+
+#login {
+    padding: 3%;
+    width: 15%;
+    background-color: whitesmoke;           
+    margin: 8% auto;
+    border-radius: 1%;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+#register {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 1%;
+    width: 40%;
+    height: 70%;
+    border-radius: 1%;
+    opacity: 95%;
+    background-color: whitesmoke;           
+    margin: auto;
+    margin-top: 4%;
+    text-align: center;
+    h1 {
+        margin-top: 0%;
+    }
+    h2 {
+        text-align: center;
+        color: #003146;
+    }
+    .button {
+        margin: auto;
+        height: 10%;
+        width: 20%;
+    }
+}
+
+.loginInput {
+    text-align: left;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.detailsText {
+    text-align: left;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    margin-top: 5%;
+    font-family: prophet-bold;
+    font-size: 200%;
+    text-align: center;
+    color: Black;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    color: black;
+}
+
+.button {
+    border-style: solid;
+    border-width: 1%;
+    border-color: #004C6C;
+    background-color: #004C6C;
+    width: 35%;
+    height: 3.2%;
+    margin: auto;
+}
+
+.buttontext {
+    font-family: prophet-regular;
+    text-align: center;
+    color: white;
+    font-size: small;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color:#003146;
+}
+
+.hyperlink {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0000EE;
+    font-size: 100%;
+}
+
+.register {
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    border-style: solid;
+    border-radius: 2%;
+    margin-top: 2%;
+}
+
+.register:hover {
+    border-color: gray;
+    .hyperlink {
+        text-decoration: underline;
+        text-decoration-color: #0000EE;
+        font-style: italic;
+    }
+}
+
+.cancelbutton {
+    border-style: solid;
+    border-width: 1%;
+    border-color: darkgray;
+    background-color: gray;
+    width: 35%;
+    height: 3.2%;
+    margin: auto;
+}
+
+.cancelbutton:hover {
+    border-color: black;
+    background-color: gray;
+}
+
+.top-nav-bar {
+    text-align: right;
+    overflow: hidden;
+    padding: 0.5%;
+    width: 80%;
+    margin: 0% auto;
+}
+
+#heading{
+    font-family: prophet-regular;
+    text-align: center;
+}
+
+.top-nav-bar a {
+    text-align: center;
+    color: white;
+    text-align: center;
+    padding: 1%;
+    text-decoration: none;
+    font-size: larger;
+    font-family: prophet-regular;
+    
+}
+
+.top-nav-bar a:hover {
+    transform: scale(110%);
+}
+
+.top-nav-bar a.active {
+    background-color: white;
+    color: #004C6C;
+    font-weight: bold;
+}
+
+#icon {
+    height: 1%;
+    width: 1%;
+}
+
+.gobackbutton {
+    border-style: none;
+    background: none;
+    width: 7%;
+    height: 5%; 
+}
+
+.goback {
+    font-family: prophet-regular;
+    text-align: center;
+    color: white;
+    font-size: larger;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-bar {
+    padding: 1%;
+    border-radius: 1%;
+    text-align: center;
+    overflow: hidden;
+    width: 47%;
+    margin-left: 5%;
+    background-color: #004C6C;
+}
+
+.nav-bar a {
+    text-align: center;
+    color: white;
+    text-align: center;
+    padding: 1%;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.nav-bar a:hover {
+    transform: scale(110%);
+}
+
+.nav-bar a.active {
+    background-color: #003146;
+    color: white;
+}
+
+#details {
+    background-color: whitesmoke;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.5%;
+    margin-top: 2%;
+    text-align: left;
+    padding: 2%;
+    opacity: 95%;
+}
+
+.error {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #EE0000;
+    font-size: 80%;
+}
+
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-style: italic;
+}
+
+input {
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+    border-radius: 3%;
+    padding: 0.5%;
+    background-color: #ebebeb;
+}
+
+input :focus {
+    border-width: 1px;
+}
+
+select {
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+    border-radius: 3%;
+    padding: 0.5%;
+    background-color: #ebebeb;
+}
+
+#header {
+    margin-top: 5%;
+    font-family: prophet-bold;
+    font-size: 200%;
+    text-align: left;
+    color: white;
+    background-color: #003146;
+    border-radius: 5%;
+    padding: 1%;
+}
+
+#bookTable {
+    width: 70%;
+    border-collapse: collapse;
+    background-color: #9e9e9e;
+    margin: auto;
+    border-radius: 2%;
+
+    th{
+        padding: 1%;
+        border-width: 5%;
+        border-style: solid;
+        border-color: #003146;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        background-color:#004C6C
+    }
+
+    td {
+        padding: 1%;
+        border-width: 5%;
+        border-style: solid;
+        border-color: #003146;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+        background-color: #ebebeb;
+    }
+}
+
+/* Active */
+#currentSearchPage {
+    background-color: #004C6C;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-decoration: none;
+    padding: 0.5%;
+    border-radius: 10%;
+}
+
+/* Rest */
+#searchPages {
+    background-color: white;
+    border-style: solid;
+    border-color: #004C6C;
+    border-radius: 10%;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #004C6C;
+    text-decoration: none;
+    padding: 0.5%;
+}
+
+#available {
+    text-align: left;
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#unavailable {
+    text-align: left;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#returnBook {
+    text-align: left;
+    color: #004C6C;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#container {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 2%;
+    width: 90%;
+    margin:0 auto;
+    background-color: white;
+    border-radius: 0.5%;
+    opacity: 95%;
+}
+
+.reccommendations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:5%;
+}
+
+.reccommendImg {
+    margin: 0% auto;
+    background-color: lightgray;
+    width: 60%;
+    border-style: solid;
+    border-color: gray;
+    border-radius:2%;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.reccommendImg:hover {
+    transform:scale(1.05);
+}
+
+.reccomendDetails p {
+    padding: 1.4%;
+    color:black;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    text-decoration: none;
+}
+
+#welcome {
+    background-color: #004C6C;
+    padding: 1%;
+    width: 30%;
+    margin: auto;
+    border-radius: 1%;
+    border-style: solid;
+    border-color: white;
+    border-width: 1%;
+    h1 {
+        margin-top: 5%;
+        font-family: prophet-bold;
+        font-size: 200%;
+        text-align: center;
+        color: white;
+    }
+}
+
+
+footer {
+    background-position: bottom center;
+    background-size: cover;
+    background-color: #353535;
+    color: white;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10%;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.footerText {
+    background-color: #414141;
+    color: white;
+    padding: 10%;
+    border-radius: 1%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.searchGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10%;
+    max-width: 60%;
+    margin: 0 auto;
+}
