@@ -1,6 +1,6 @@
 # WebDev_Library
 
-WebDev_Library is a PHP and MariaDB library web application created for the Web Development 2 module. It allows visitors to view recommended books, search the catalogue, filter books by category, create an account, log in, reserve available books, and manage or return their reservations.
+WebDev_Library is a PHP and MariaDB library web application created for the Web Development 2 module. It allows visitors to view recommended books, search the catalogue, filter books by category, create accounts, reserve books, and manage their reservations.
 
 ## Features
 
@@ -34,6 +34,7 @@ WebDev_Library is a PHP and MariaDB library web application created for the Web 
 ```text
 .
 ├── README.md                  Project documentation
+├── LICENSE                    MIT License
 ├── library.php                MariaDB connection configuration
 ├── library.sql                Database schema and sample data
 ├── reserve.php                Creates a reservation for a book
@@ -140,4 +141,6 @@ This project is intended as an educational application.
 
 ## Licence
 
-No licence file is currently included in the repository.
+This project is licensed under the [MIT License](LICENSE).
+
+Copyright (c) 2026 Dorian Džigumović.
