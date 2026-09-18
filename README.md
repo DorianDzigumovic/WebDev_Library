@@ -136,7 +136,7 @@ If the project is placed under an Apache document root, open the equivalent `/pa
 
 ## Security considerations
 
-This project is intended as an educational application and should be reviewed before deployment. In particular, production hardening should include password hashing instead of storing and comparing plaintext passwords, consistent server-side authentication checks, safer session and cookie settings, CSRF protection for state-changing actions, stricter authorization around reservations and account operations, and prepared statements for every database query involving user input.
+This project is intended as an educational application.
 
 ## Licence
 
