@@ -32,7 +32,7 @@
             <a class="heading" href="Logout.php">Logout</a>
 
             <?php
-                $sql = "SELECT Username, Password, FirstName, Surname, AddressLine1, AddressLine2, City, County, Telephone, Mobile FROM Users WHERE Username='$User'";
+                $sql = "SELECT Username, Password, FirstName, Surname, AddressLine1, AddressLine2, City, County, Telephone, Mobile FROM users WHERE Username='$User'";
                 $result = $conn->query($sql);
 
                 if ($result && $row = $result->fetch_assoc()) {
@@ -183,7 +183,7 @@
 
                     // If username changed, check if new one already exists
                     if ($username !== $oldUsername) {
-                        $stmt = $conn->prepare("SELECT 1 FROM Users WHERE Username = ?");
+                        $stmt = $conn->prepare("SELECT 1 FROM users WHERE Username = ?");
                         if (!$stmt) {
                             die("Prepare failed: " . $conn->error);
                         }
@@ -199,7 +199,7 @@
 
                     if ($error === '') {
                         // Update existing user
-                        $stmt = $conn->prepare("UPDATE Users 
+                        $stmt = $conn->prepare("UPDATE users 
                             SET Username = ?, Password = ?, FirstName = ?, Surname = ?, 
                                 AddressLine1 = ?, AddressLine2 = ?, City = ?, County = ?, 
                                 Telephone = ?, Mobile = ?
