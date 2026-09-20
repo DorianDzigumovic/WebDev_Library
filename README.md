@@ -210,7 +210,7 @@ If the project is placed under an Apache document root, open the equivalent `/pa
 
 ## Security considerations
 
-This project is intended as an educational application. The Docker Compose credentials are development defaults. For production, use Docker secrets or environment-specific variables, change all default passwords, and do not expose MariaDB publicly.
+This project is intended as an educational application. The Docker Compose credentials are development defaults.
 
 ## Licence
 
