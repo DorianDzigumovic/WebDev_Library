@@ -70,8 +70,6 @@ if (!isset($_COOKIE['SessionID'])) {
                 }
             }
 
-            $offset = ($page - 1) * $limit;
-
             $where = " WHERE 1=1 ";
             $params = array();
             $types = "";
@@ -110,8 +108,14 @@ if (!isset($_COOKIE['SessionID'])) {
             }
 
             if ($total_rows > 0) {
-                $totalPages = ceil($total_rows / $limit);
+                $totalPages = (int)ceil($total_rows / $limit);
             }
+
+            // Keep manually entered page numbers within the available range.
+            if ($page > $totalPages) {
+                $page = $totalPages;
+            }
+            $offset = ($page - 1) * $limit;
 
             $count_stmt->close();
 
@@ -216,15 +220,36 @@ if (!isset($_COOKIE['SessionID'])) {
 
     <center>
         <?php
-
             if ($totalPages > 1) {
-                for ($i = 1; $i <= $totalPages; $i++) {
+                $pageUrl = function ($pageNumber) use ($search, $category) {
+                    return '?search=' . urlencode($search)
+                        . '&category=' . urlencode($category)
+                        . '&page=' . $pageNumber;
+                };
+
+                // Show at most three consecutive page numbers, centred on the current page.
+                $startPage = max(1, min($page - 1, $totalPages - 2));
+                $endPage = min($totalPages, $startPage + 2);
+
+                echo "<a id='searchPages' href='" . $pageUrl(1) . "' aria-label='Go to first page'>&laquo;</a> ";
+
+                if ($page > 1) {
+                    echo "<a id='searchPages' href='" . $pageUrl($page - 1) . "' aria-label='Go to previous page'>&lsaquo;</a> ";
+                }
+
+                for ($i = $startPage; $i <= $endPage; $i++) {
                     if ($i == $page) {
                         echo "<span id='currentSearchPage'>" . $i . "</span> ";
                     } else {
-                        echo "<a id='searchPages' href='?search=" . urlencode($search) . "&category=" . htmlspecialchars($category) . "&page=" . $i . "'>" . $i . "</a> ";
+                        echo "<a id='searchPages' href='" . $pageUrl($i) . "'>" . $i . "</a> ";
                     }
                 }
+
+                if ($page < $totalPages) {
+                    echo "<a id='searchPages' href='" . $pageUrl($page + 1) . "' aria-label='Go to next page'>&rsaquo;</a> ";
+                }
+
+                echo "<a id='searchPages' href='" . $pageUrl($totalPages) . "' aria-label='Go to last page'>&raquo;</a>";
             }
 
             if (isset($main_stmt) && $main_stmt instanceof mysqli_stmt) {
