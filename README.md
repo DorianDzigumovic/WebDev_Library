@@ -1,6 +1,6 @@
 # WebDev_Library
 
-WebDev_Library is a PHP and MariaDB library web application created for the Web Development 2 module. It allows visitors to view recommended books, search the catalogue, filter books by category, create accounts, reserve books, and manage account details.
+WebDev_Library is a PHP and MariaDB library web application created for the Web Development 2 module. It allows visitors to view recommended books, search the catalogue, filter books by category, check availability, and reserve books.
 
 ## Features
 
@@ -73,7 +73,7 @@ The application uses a database named `library`. The supplied `library.sql` dump
 - `reservations` links a user to a reserved book and records the reservation date.
 - `users` stores account and contact details.
 
-Foreign keys connect books to categories and reservations to both books and users. The SQL dump also includes sample books, users, categories, and a reservation so the application can be tested after setup.
+Foreign keys connect books to categories and reservations to both books and users. The SQL dump also includes sample books, users, categories, and a reservation so the application can be tested after the database is initialized.
 
 ## Setup
 
@@ -95,12 +95,6 @@ cd WebDev_Library
 docker compose up --build
 ```
 
-The `git clone` command downloads the repository files to your computer. During `docker compose up --build`, the `Dockerfile` copies those files into the web container with:
-
-```dockerfile
-COPY . /var/www/html/
-```
-
 If the repository has already been cloned, run the following from its root directory instead:
 
 ```bash
@@ -115,9 +109,10 @@ docker compose up --build -d
 
 This starts:
 
-- the PHP/Apache application on `http://localhost:8080`
-- a MariaDB service named `db`
-- a database called `library` with the schema loaded from `library.sql`
+- The PHP/Apache application on `http://localhost:8080`.
+- A MariaDB 10.11 service named `db`.
+- A database called `library`, initialized from `library.sql` when the database volume is created.
+- A MariaDB health check that must pass before the web service starts.
 
 The application reads its database settings from environment variables in `docker-compose.yml`:
 
@@ -134,17 +129,30 @@ Open the application at:
 http://localhost:8080/pages/Index.php
 ```
 
-To stop the services, run:
+MariaDB is exposed on the host at `127.0.0.1:3306`, allowing local tools such as DBeaver to connect while preventing access from other machines. Use these connection settings:
+
+```text
+Host:     localhost
+Port:     3306
+Database: library
+User:     library_user
+Password: library_password
+```
+
+The database data is stored in the named Docker volume `mariadb_data`. The `library.sql` file is imported only when MariaDB initializes an empty data directory. To recreate the database from the SQL file, stop the services and remove the volume:
+
+```bash
+docker compose down -v
+docker compose up --build
+```
+
+To stop the services without removing the database data, run:
 
 ```bash
 docker compose down
 ```
 
-To stop the services and remove the persisted MariaDB data as well, run:
-
-```bash
-docker compose down -v
-```
+The MariaDB root password is configured by `MARIADB_ROOT_PASSWORD` in `docker-compose.yml`. The credentials included in this file are development defaults only and should be changed for any non-local deployment.
 
 ### 3. Local database setup (without Docker)
 
@@ -202,7 +210,7 @@ If the project is placed under an Apache document root, open the equivalent `/pa
 
 ## Security considerations
 
-This project is intended as an educational application.
+This project is intended as an educational application. The Docker Compose credentials are development defaults. For production, use Docker secrets or environment-specific variables, change all default passwords, and do not expose MariaDB publicly.
 
 ## Licence
 
