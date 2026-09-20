@@ -28,7 +28,7 @@
             $mob    = trim($_POST['Mobile']);
 
 
-            $stmt = $conn->prepare("SELECT 1 FROM Users WHERE Username = ?");
+            $stmt = $conn->prepare("SELECT 1 FROM users WHERE Username = ?");
             if (!$stmt) {
                 die("Prepare failed: " . $conn->error);
             }
@@ -66,7 +66,7 @@
             if (empty($userErrors) && empty($passErrors)){
                 $stmt->close();
 
-                $stmt = $conn->prepare("INSERT INTO Users 
+                $stmt = $conn->prepare("INSERT INTO users 
                     (Username, Password, FirstName, Surname, AddressLine1, AddressLine2, City, County, Telephone, Mobile)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
