@@ -16,6 +16,10 @@ services:
   db:
     image: mariadb:10.11
     container_name: webdev_library_db
+    ports:
+      # Expose MariaDB to DBeaver on the host machine.
+      # Binding to localhost keeps it inaccessible from other machines.
+      - "127.0.0.1:3306:3306"
     environment:
       MARIADB_DATABASE: library
       MARIADB_USER: library_user
