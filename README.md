@@ -85,14 +85,32 @@ Install or enable:
 - Or, for local non-Docker use: PHP 8.2 or later, MariaDB or MySQL, and the PHP `mysqli` extension.
 - A web server capable of executing PHP, such as Apache, or PHP's development server.
 
-### 2. Docker setup (recommended)
+### 2. Get the project files and start Docker
 
-The repository includes a Docker configuration so the application can run with its own MariaDB container and the correct environment variables.
+Clone the repository, move into the project directory, and start the Docker services:
 
-From the repository root:
+```bash
+git clone https://github.com/DorianDzigumovic/WebDev_Library.git
+cd WebDev_Library
+docker compose up --build
+```
+
+The `git clone` command downloads the repository files to your computer. During `docker compose up --build`, the `Dockerfile` copies those files into the web container with:
+
+```dockerfile
+COPY . /var/www/html/
+```
+
+If the repository has already been cloned, run the following from its root directory instead:
 
 ```bash
 docker compose up --build
+```
+
+The `--build` option rebuilds the PHP/Apache image and ensures the latest repository files are included. To run the containers in the background, use:
+
+```bash
+docker compose up --build -d
 ```
 
 This starts:
@@ -114,6 +132,18 @@ Open the application at:
 
 ```text
 http://localhost:8080/pages/Index.php
+```
+
+To stop the services, run:
+
+```bash
+docker compose down
+```
+
+To stop the services and remove the persisted MariaDB data as well, run:
+
+```bash
+docker compose down -v
 ```
 
 ### 3. Local database setup (without Docker)
