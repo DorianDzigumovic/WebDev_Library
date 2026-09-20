@@ -1,5 +1,13 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+include("../library.php");
+
+$User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
+?>
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <html>
 <head>
     <title>Library:Home</title>
@@ -10,13 +18,6 @@
 </head>
 
 <body>
-    <?php
-        session_start();
-        include("../library.php");
-
-        $User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
-    ?>
-
     <header>
         <div class="top-nav-bar">
 
@@ -53,7 +54,7 @@
     <br><br>
 
     <div id="container">
-            
+
         <h2> Our reccommendations :</h2>
 
         <br><br>
@@ -73,7 +74,7 @@
             <div class="reccommendImg">
                 <a href="Browse.php?search=Tara+Road">
                     <img id="image2" src="../media/taraRoad.jpg" alt="Cover of book Tara Road by Maeve Binchy" width="100%" height="auto">
-                    
+
                     <div class="reccomendDetails">
                         <p>Tara Road by Maeve Binchy</p>
                     </div>
@@ -83,7 +84,7 @@
             <div class="reccommendImg">
                 <a href="Browse.php?search=Shooting+History">
                     <img id="image3" src="../media/shootingHistory.jpg" alt="Cover of book Shooting History by Jon Snow" width="100%" height="auto">
-                    
+
                     <div class="reccomendDetails">
                         <p>Shooting History by Jon Snow</p>
                     </div>

@@ -1,5 +1,31 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+include("../library.php");
+
+$User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
+
+if (!isset($_COOKIE['SessionID'])) {
+    header("Location: Login.php");
+    exit;
+}
+
+if (isset($_POST['canceled'])) {
+    header("Location: Index.php");
+    exit;
+}
+
+if (isset($_POST['submitted']) && !isset($_POST['canceled'])) {
+    session_destroy();
+    $conn->close();
+    setcookie('SessionID', 0, time() - 3600, '/');
+    header("Location: Index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <html>
 <head>
     <title>Library :Logout</title>
@@ -9,33 +35,6 @@
 </head>
 
 <body>
-    <?php
-
-        session_start();
-        include("../library.php");
-
-        $User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
-    
-        if (!isset($_COOKIE['SessionID'])) { ?>
-
-            <script>window.location.replace("Login.php");</script>
-
-    <?php } 
-
-        if (isset($_POST['canceled'])) {
-            header("Location: Index.php");
-            exit;
-        }
-
-        if (isset($_POST['submitted']) && !isset($_POST['canceled'])) {
-            session_destroy();
-            $conn->close();
-            header("Location: Index.php");
-            setcookie('SessionID', 0, time() - 3600);
-            exit;
-        }
-    ?>
-
     <header>
         <br><br>
         <a id="header">Library<img src="../media/headerIcon.png" style="width:3%;height:3%;" alt="Library icon"></a>
@@ -47,7 +46,7 @@
             <button class="button" type="submit" name="submitted">
                 <a class="buttontext">LOGOUT</a>
             </button>
-        
+
             <form method="post" action="">
                 <button class="cancelbutton" type="submit" name="canceled"><a class="buttontext">Cancel</a></button>
             </form>

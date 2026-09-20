@@ -1,5 +1,18 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+include("../library.php");
+
+$User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
+
+if (!isset($_COOKIE['SessionID'])) {
+    header("Location: Login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <html>
 <head>
     <title>Library:Browse</title>
@@ -10,18 +23,6 @@
 </head>
 
 <body>
-   <?php
-        session_start();
-        include("../library.php");
-
-        $User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
-    
-        if (!isset($_COOKIE['SessionID'])) { ?>
-
-            <script>window.location.replace("Login.php");</script>
-
-    <?php } ?>
-
     <header>
         <div class="top-nav-bar">
 
@@ -37,7 +38,7 @@
                 }
             ?>
         </div>
-        
+
         <a id="header">Library<img src="../media/headerIcon.png" style="width:3%;height:3%;" alt="Library logo"></a>
 
     </header>
@@ -75,14 +76,12 @@
             $params = array();
             $types = "";
 
-
             if ($search !== "") {
                 $where .= " AND (BookTitle LIKE ? OR Author LIKE ?) ";
                 $params[] = "%" . $search . "%";
                 $params[] = "%" . $search . "%";
                 $types .= "ss";
             }
-
 
             if ($category !== "") {
                 $where .= " AND Category = ? ";
@@ -116,7 +115,6 @@
 
             $count_stmt->close();
 
-
             $main_sql = "SELECT * FROM books" . $where . " LIMIT ? OFFSET ?";
             $main_stmt = $conn->prepare($main_sql);
 
@@ -135,9 +133,8 @@
         }
     ?>
 
-    `<div id="register">
+    <div id="register">
         <h1>Search Books</h1>
-
 
         <form method="GET">
             <section class="searchGrid">
@@ -208,7 +205,7 @@
                             <?php } else { ?>
                                 <a id="unavailable">Unavailable</a>
                             <?php } ?>
-                        </td> 
+                        </td>
                     </tr>
                 <?php }
             }

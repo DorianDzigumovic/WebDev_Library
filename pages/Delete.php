@@ -1,5 +1,27 @@
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+include("../library.php");
+
+if (isset($_POST['canceled'])) {
+    header("Location: MyAccount.php?action=delete");
+    exit;
+}
+
+if ((isset($_POST['submitted'])) && !isset($_POST['canceled'])) {
+    $User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
+    $sql = "DELETE FROM users WHERE Username='$User'";
+    $conn->query($sql);
+    session_destroy();
+    $conn->close();
+    setcookie('SessionID', 0, time() - 3600, '/');
+    header("Location: Index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <html>
 <head>
     <title>Library:Delete</title>
@@ -10,32 +32,7 @@
 </head>
 
 <body>
-
-    <?php
-        session_start();
-        include("../library.php");
-
-        if (isset($_POST['canceled'])) {
-            header("Location: MyAccount.php?action=delete");
-            exit;
-        }
-
-        if ((isset($_POST['submitted'])) && !isset($_POST['canceled'])) {
-
-            $User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
-            $sql = "SELECT Username FROM users WHERE Username='$User'";
-            $sql = "DELETE FROM users WHERE Username='$User'";
-            $conn->query($sql);
-            session_destroy();
-            $conn->close();
-            header("Location: Index.php");
-            setcookie('SessionID', 0, time() - 3600);
-            exit;
-        }
-    ?>
-
     <header>
-        
         <br><br>
         <a id="header">Library<img src="../media/headerIcon.png" style="width:3%;height:3%;" alt="Library logo"></a>
     </header>
@@ -44,18 +41,15 @@
         <h2>Are you sure you want to delete you account?</h2>
 
         <form method="post" action="">
-
-        <button class="button" type="submit" name="submitted">
-            <a class="buttontext">Delete</a>
-        </button>
-
-        <form method="post" action="">
-            <button class="cancelbutton" type="submit" name="canceled">
-                <a class="buttontext">Cancel</a>
+            <button class="button" type="submit" name="submitted">
+                <a class="buttontext">Delete</a>
             </button>
-        </form>
 
-
+            <form method="post" action="">
+                <button class="cancelbutton" type="submit" name="canceled">
+                    <a class="buttontext">Cancel</a>
+                </button>
+            </form>
         </form>
     </div>
 
