@@ -120,7 +120,7 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`ISBN`, `Username`, `ReservedDate`) VALUES
-('98234-029384', 'joecrotty', '2008-10-11');
+('98234-029384', 'joseph.crotty', '2008-10-11');
 
 -- --------------------------------------------------------
 
@@ -145,30 +145,31 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+-- These are fictional seed credentials and contact numbers for development only.
 INSERT INTO `users` (`Username`, `Password`, `FirstName`, `Surname`, `AddressLine1`, `AddressLine2`, `City`, `County`, `Telephone`, `Mobile`) VALUES
-('alanjmckenna', 't1234s', 'Alan', 'McKenna', '38 Cranley Road', 'Fairview', 'Dublin', 'Dublin', '9988377', '856625567'),
-('joecrotty', 'kj7899', 'Joseph', 'Crotty', 'Apt 5 Clyde Road', 'Donnybrook', 'Dublin', 'Dublin', '8887889', '876654456'),
-('tommy100', '123456', 'Tom', 'Behan', '14 Hyde Road', 'Dalkey', 'Dublin', 'Dublin', '9983747', '876738782'),
-('user001', 'Library001!', 'Amelia', 'Byrne', '1 River Road', 'Rathmines', 'Dublin', 'Dublin', '010000001', '085000001'),
-('user002', 'Library002!', 'Ben', 'Murphy', '2 Oak Avenue', 'Blackrock', 'Dublin', 'Dublin', '010000002', '085000002'),
-('user003', 'Library003!', 'Cara', 'Walsh', '3 Main Street', 'Swords', 'Dublin', 'Dublin', '010000003', '085000003'),
-('user004', 'Library004!', 'Daniel', 'Ryan', '4 Church Road', 'Bray', 'Wicklow', 'Wicklow', '010000004', '085000004'),
-('user005', 'Library005!', 'Ella', 'Doyle', '5 Harbour View', 'Galway City', 'Galway', 'Galway', '010000005', '085000005'),
-('user006', 'Library006!', 'Finn', 'Kelly', '6 College Road', 'Cork City', 'Cork', 'Cork', '010000006', '085000006'),
-('user007', 'Library007!', 'Grace', 'OBrien', '7 Park Lane', 'Limerick City', 'Limerick', 'Limerick', '010000007', '085000007'),
-('user008', 'Library008!', 'Harry', 'Nolan', '8 Station Road', 'Waterford City', 'Waterford', 'Waterford', '010000008', '085000008'),
-('user009', 'Library009!', 'Isla', 'Kavanagh', '9 Market Square', 'Kilkenny Town', 'Kilkenny', 'Kilkenny', '010000009', '085000009'),
-('user010', 'Library010!', 'Jack', 'Foley', '10 Green Road', 'Navan', 'Meath', 'Meath', '010000010', '085000010'),
-('user011', 'Library011!', 'Katie', 'Quinn', '11 Castle Street', 'Naas', 'Kildare', 'Kildare', '010000011', '085000011'),
-('user012', 'Library012!', 'Liam', 'Dunne', '12 Hill Road', 'Drogheda', 'Louth', 'Louth', '010000012', '085000012'),
-('user013', 'Library013!', 'Mia', 'Hughes', '13 Lakeside', 'Athlone', 'Westmeath', 'Westmeath', '010000013', '085000013'),
-('user014', 'Library014!', 'Noah', 'Murray', '14 Forest Road', 'Letterkenny', 'Donegal', 'Donegal', '010000014', '085000014'),
-('user015', 'Library015!', 'Orla', 'Power', '15 Mill Road', 'Carlow Town', 'Carlow', 'Carlow', '010000015', '085000015'),
-('user016', 'Library016!', 'Paul', 'Kennedy', '16 Valley Road', 'Ennis', 'Clare', 'Clare', '010000016', '085000016'),
-('user017', 'Library017!', 'Ruby', 'Mahon', '17 Seaview', 'Tralee', 'Kerry', 'Kerry', '010000017', '085000017'),
-('user018', 'Library018!', 'Sam', 'Healy', '18 Church Lane', 'Sligo Town', 'Sligo', 'Sligo', '010000018', '085000018'),
-('user019', 'Library019!', 'Saoirse', 'Whelan', '19 Orchard Road', 'Wexford Town', 'Wexford', 'Wexford', '010000019', '085000019'),
-('user020', 'Library020!', 'Theo', 'Clarke', '20 Garden Road', 'Mullingar', 'Westmeath', 'Westmeath', '010000020', '085000020');
+('alan.mckenna', 'Cedar!Alan84', 'Alan', 'McKenna', '38 Cranley Road', 'Fairview', 'Dublin', 'Dublin', '012348761', '0873487612'),
+('joseph.crotty', 'Harbour!Joe72', 'Joseph', 'Crotty', 'Apt 5 Clyde Road', 'Donnybrook', 'Dublin', 'Dublin', '012347892', '0873478921'),
+('tom.behan', 'Valley!Tom63', 'Tom', 'Behan', '14 Hyde Road', 'Dalkey', 'Dublin', 'Dublin', '012346583', '0873465830'),
+('amelia.byrne', 'River!Amelia26', 'Amelia', 'Byrne', '1 River Road', 'Rathmines', 'Dublin', 'Dublin', '012345184', '0853451842'),
+('ben.murphy', 'Oak!BenMurphy47', 'Ben', 'Murphy', '2 Oak Avenue', 'Blackrock', 'Dublin', 'Dublin', '012345295', '0853452953'),
+('cara.walsh', 'Main!CaraWalsh58', 'Cara', 'Walsh', '3 Main Street', 'Swords', 'Dublin', 'Dublin', '012345306', '0853453064'),
+('daniel.ryan', 'Church!Daniel39', 'Daniel', 'Ryan', '4 Church Road', 'Bray', 'Wicklow', 'Wicklow', '012762417', '0867624175'),
+('ella.doyle', 'Harbour!Ella64', 'Ella', 'Doyle', '5 Harbour View', 'Galway City', 'Galway', 'Galway', '091562728', '0865627286'),
+('finn.kelly', 'College!Finn85', 'Finn', 'Kelly', '6 College Road', 'Cork City', 'Cork', 'Cork', '021487639', '0874876397'),
+('grace.obrien', 'Park!Grace91', 'Grace', 'OBrien', '7 Park Lane', 'Limerick City', 'Limerick', 'Limerick', '061348540', '0853485408'),
+('harry.nolan', 'Station!Harry73', 'Harry', 'Nolan', '8 Station Road', 'Waterford City', 'Waterford', 'Waterford', '051823651', '0868236519'),
+('isla.kavanagh', 'Market!Isla46', 'Isla', 'Kavanagh', '9 Market Square', 'Kilkenny Town', 'Kilkenny', 'Kilkenny', '056781462', '0877814620'),
+('jack.foley', 'Green!JackFoley52', 'Jack', 'Foley', '10 Green Road', 'Navan', 'Meath', 'Meath', '046902573', '0859025731'),
+('katie.quinn', 'Castle!Katie68', 'Katie', 'Quinn', '11 Castle Street', 'Naas', 'Kildare', 'Kildare', '045874684', '0868746842'),
+('liam.dunne', 'Hill!LiamDunne37', 'Liam', 'Dunne', '12 Hill Road', 'Drogheda', 'Louth', 'Louth', '041983795', '0879837953'),
+('mia.hughes', 'Lake!MiaHughes49', 'Mia', 'Hughes', '13 Lakeside', 'Athlone', 'Westmeath', 'Westmeath', '090642806', '0856428064'),
+('noah.murray', 'Forest!Noah61', 'Noah', 'Murray', '14 Forest Road', 'Letterkenny', 'Donegal', 'Donegal', '074912917', '0869129175'),
+('orla.power', 'Mill!OrlaPower74', 'Orla', 'Power', '15 Mill Road', 'Carlow Town', 'Carlow', 'Carlow', '059914028', '0879140286'),
+('paul.kennedy', 'Valley!Paul83', 'Paul', 'Kennedy', '16 Valley Road', 'Ennis', 'Clare', 'Clare', '065682139', '0856821397'),
+('ruby.mahon', 'Seaview!Ruby56', 'Ruby', 'Mahon', '17 Seaview', 'Tralee', 'Kerry', 'Kerry', '066712240', '0867122408'),
+('sam.healy', 'Church!SamHealy88', 'Sam', 'Healy', '18 Church Lane', 'Sligo Town', 'Sligo', 'Sligo', '071913351', '0879133519'),
+('saoirse.whelan', 'Orchard!Saoirse42', 'Saoirse', 'Whelan', '19 Orchard Road', 'Wexford Town', 'Wexford', 'Wexford', '053914462', '0859144620'),
+('theo.clarke', 'Garden!TheoClarke65', 'Theo', 'Clarke', '20 Garden Road', 'Mullingar', 'Westmeath', 'Westmeath', '044934573', '0869345731');
 
 --
 -- Indexes for dumped tables
