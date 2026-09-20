@@ -23,8 +23,8 @@
         if ((isset($_POST['submitted'])) && !isset($_POST['canceled'])) {
 
             $User = isset($_SESSION["Users"]) ? $_SESSION["Users"] : null;
-            $sql = "SELECT Username FROM Users WHERE Username='$User'";
-            $sql = "DELETE FROM Users WHERE Username='$User'";
+            $sql = "SELECT Username FROM users WHERE Username='$User'";
+            $sql = "DELETE FROM users WHERE Username='$User'";
             $conn->query($sql);
             session_destroy();
             $conn->close();
