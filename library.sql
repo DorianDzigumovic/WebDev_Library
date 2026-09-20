@@ -127,7 +127,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`Username`, `Password`, `FirstName`, `Surname`, `AddressLine1`, `AddressLine2`, `City`, `County`, `Telephone`, `Mobile`) VALUES
 ('alanjmckenna', 't1234s', 'Alan', 'McKenna', '38 Cranley Road', 'Fairview', 'Dublin', 'Dublin', '9988377', '856625567'),
-('Ivan', 'Doki1234', 'Ivan', 'Juric', 'Adress', '', 'Dublin', 'Dublin', '', ''),
 ('joecrotty', 'kj7899', 'Joseph', 'Crotty', 'Apt 5 Clyde Road', 'Donnybrook', 'Dublin', 'Dublin', '8887889', '876654456'),
 ('tommy100', '123456', 'Tom', 'Behan', '14 Hyde Road', 'Dalkey', 'Dublin', 'Dublin', '9983747', '876738782');
 
