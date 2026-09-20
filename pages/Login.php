@@ -32,7 +32,7 @@
                     $u = trim($_POST["Username"]);
                     $p = $_POST["Password"];
 
-                    $stmt = $conn->prepare("SELECT Username, Password FROM Users WHERE Username = ?");
+                    $stmt = $conn->prepare("SELECT Username, Password FROM users WHERE Username = ?");
                     if (!$stmt) {
                         die("Prepare failed: " . $conn->error);
                     }
