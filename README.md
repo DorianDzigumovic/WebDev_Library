@@ -1,6 +1,6 @@
 # WebDev_Library
 
-WebDev_Library is a PHP and MariaDB library web application created for the Web Development 2 module. It allows visitors to view recommended books, search the catalogue, filter books by category, create accounts, reserve books, and manage their reservations.
+WebDev_Library is a PHP and MariaDB library web application created for the Web Development 2 module. It allows visitors to view recommended books, search the catalogue, filter books by category, create accounts, reserve books, and manage account details.
 
 ## Features
 
@@ -27,6 +27,7 @@ WebDev_Library is a PHP and MariaDB library web application created for the Web 
 - **Database:** MariaDB/MySQL
 - **Database access:** PHP `mysqli` extension with prepared statements in the main search, registration, reservation, and account flows.
 - **Frontend:** HTML, CSS, and small inline JavaScript validation helpers.
+- **Containerisation:** Docker and Docker Compose for local development and service orchestration.
 - **Assets:** JPEG and PNG images stored in `media/`.
 
 ## Project structure
@@ -37,6 +38,9 @@ WebDev_Library is a PHP and MariaDB library web application created for the Web 
 ├── LICENSE                    MIT License
 ├── library.php                MariaDB connection configuration
 ├── library.sql                Database schema and sample data
+├── Dockerfile                 PHP + Apache container image
+├── docker-compose.yml         Web and database service orchestration
+├── .dockerignore              Docker build exclusions
 ├── reserve.php                Creates a reservation for a book
 ├── returnBook.php             Removes a reservation and marks a book available
 ├── pages/
@@ -77,12 +81,42 @@ Foreign keys connect books to categories and reservations to both books and user
 
 Install or enable:
 
-- PHP 8.2 or later.
-- MariaDB or MySQL.
-- The PHP `mysqli` extension.
+- Docker and Docker Compose
+- Or, for local non-Docker use: PHP 8.2 or later, MariaDB or MySQL, and the PHP `mysqli` extension.
 - A web server capable of executing PHP, such as Apache, or PHP's development server.
 
-### 2. Create the database
+### 2. Docker setup (recommended)
+
+The repository includes a Docker configuration so the application can run with its own MariaDB container and the correct environment variables.
+
+From the repository root:
+
+```bash
+docker compose up --build
+```
+
+This starts:
+
+- the PHP/Apache application on `http://localhost:8080`
+- a MariaDB service named `db`
+- a database called `library` with the schema loaded from `library.sql`
+
+The application reads its database settings from environment variables in `docker-compose.yml`:
+
+```text
+DB_HOST=db
+DB_NAME=library
+DB_USER=library_user
+DB_PASSWORD=library_password
+```
+
+Open the application at:
+
+```text
+http://localhost:8080/pages/Index.php
+```
+
+### 3. Local database setup (without Docker)
 
 Create the `library` database and import the supplied SQL dump. For example, from a MariaDB/MySQL command line:
 
@@ -91,7 +125,7 @@ mysql -u root -p -e "CREATE DATABASE library;"
 mysql -u root -p library < library.sql
 ```
 
-The included `library.php` connection file currently expects a local database with these settings:
+The included `library.php` connection file expects a local database with these settings:
 
 ```text
 Host:     localhost
@@ -102,7 +136,7 @@ Password: empty
 
 If your local database uses different credentials, update `library.php` before starting the application. Do not commit production credentials to the repository.
 
-### 3. Start the application
+### 4. Start the application locally
 
 From the repository root, start PHP's development server:
 
@@ -130,6 +164,7 @@ If the project is placed under an Apache document root, open the equivalent `/pa
 ## Notes for development
 
 - Shared database connection setup is kept in `library.php` and included by the PHP pages and action scripts.
+- The project is configured for Docker compatibility via `Dockerfile`, `docker-compose.yml`, and environment variables in `library.php`.
 - The catalogue query in `pages/Browse.php` uses prepared statements for search, category, count, limit, and offset values.
 - Reservation actions are handled by the root-level `reserve.php` and `returnBook.php` scripts, which update both `reservations` and the `books.Reserved` flag.
 - The interface uses shared styles from `libraryCSS/styles.css` and the fixed background defined in `libraryCSS/background.css`.
