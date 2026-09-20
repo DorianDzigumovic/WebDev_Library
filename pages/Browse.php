@@ -30,7 +30,7 @@ if (!isset($_COOKIE['SessionID'])) {
             <a class="heading active" href="Browse.php">Browse Books</a>
             <a class="heading" href="Logout.php">Logout</a>
             <?php
-                $sql = "SELECT Username, Password, FirstName, Surname, AddressLine1, AddressLine2, City, County, Telephone, Mobile FROM Users WHERE Username='$User'";
+                $sql = "SELECT Username, Password, FirstName, Surname, AddressLine1, AddressLine2, City, County, Telephone, Mobile FROM users WHERE Username='$User'";
                 $result = $conn->query($sql);
 
                 if ($result && $row = $result->fetch_assoc()) {
