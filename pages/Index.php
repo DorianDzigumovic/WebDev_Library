@@ -28,7 +28,7 @@
                 <a class="heading" href="Logout.php">Logout</a>
 
                 <?php
-                    $sql = "SELECT FirstName FROM Users WHERE Username='$User'";
+                    $sql = "SELECT FirstName FROM users WHERE Username='$User'";
                     $result = $conn->query($sql);
 
                     if ($result && $row = $result->fetch_assoc()) {
