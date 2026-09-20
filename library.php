@@ -1,15 +1,16 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "library";
+    // Docker Compose uses DB_HOST=db. The defaults keep the project usable with
+    // the existing XAMPP/local MariaDB setup as well.
+    $servername = getenv('DB_HOST') ?: 'localhost';
+    $username = getenv('DB_USER') ?: 'root';
+    $password = getenv('DB_PASSWORD') ?: '';
+    $dbname = getenv('DB_NAME') ?: 'library';
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
+    $conn->set_charset('utf8mb4');
 ?>
