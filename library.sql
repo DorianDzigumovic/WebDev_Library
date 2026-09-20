@@ -56,27 +56,44 @@ INSERT INTO `books` (`ISBN`, `BookTitle`, `Author`, `Edition`, `Year`, `Category
 ('993-004-00', 'My life in bits', 'John Smith', 1, 2001, 1, 'N'),
 ('9987-0039882', 'Shooting History', 'Jon Snow', 1, 2003, 1, 'N');
 
--- Add 286 deterministic sample books, bringing the catalogue to 300 books total.
--- Categories 1-8 are used; category 9 is intentionally not used.
-INSERT INTO `books` (`ISBN`, `BookTitle`, `Author`, `Edition`, `Year`, `Category`, `Reserved`)
-SELECT
-  CONCAT('GEN-', LPAD(n, 6, '0')),
-  CONCAT('Sample Library Book ', n),
-  CONCAT('Author ', n),
-  ((n - 1) MOD 5) + 1,
-  1980 + ((n - 1) MOD 46),
-  ((n - 1) MOD 8) + 1,
-  'N'
-FROM (
-  SELECT ones.n + tens.n * 10 + hundreds.n * 100 + 1 AS n
-  FROM
-    (SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) AS ones
-  CROSS JOIN
-    (SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) AS tens
-  CROSS JOIN
-    (SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2) AS hundreds
-  WHERE ones.n + tens.n * 10 + hundreds.n * 100 < 286
-) AS generated_books;
+-- Add 36 real books to reach a 50-book library total.
+INSERT INTO `books` (`ISBN`, `BookTitle`, `Author`, `Edition`, `Year`, `Category`, `Reserved`) VALUES
+('9780141036144', '1984', 'George Orwell', 1, 1949, 8, 'N'),
+('9780141439518', 'Pride and Prejudice', 'Jane Austen', 1, 1813, 8, 'N'),
+('9780547928227', 'The Hobbit', 'J.R.R. Tolkien', 1, 1937, 8, 'N'),
+('9780743273565', 'The Great Gatsby', 'F. Scott Fitzgerald', 1, 1925, 8, 'N'),
+('9780441172719', 'Dune', 'Frank Herbert', 1, 1965, 8, 'N'),
+('9780061120084', 'To Kill a Mockingbird', 'Harper Lee', 1, 1960, 8, 'N'),
+('9780140449136', 'Les Miserables', 'Victor Hugo', 1, 1862, 8, 'N'),
+('9780007524205', 'Animal Farm', 'George Orwell', 1, 1945, 8, 'N'),
+('9780316769488', 'The Catcher in Rye', 'J.D. Salinger', 1, 1951, 8, 'N'),
+('9780451524935', 'Fahrenheit 451', 'Ray Bradbury', 1, 1953, 8, 'N'),
+('9780062315007', 'Atomic Habits', 'James Clear', 1, 2018, 6, 'N'),
+('9780679604071', 'The Power of Habit', 'Charles Duhigg', 1, 2012, 6, 'N'),
+('9780749953237', 'The 7 Habits', 'Stephen Covey', 1, 1989, 6, 'N'),
+('9781451648539', 'Steve Jobs', 'Walter Isaacson', 1, 2011, 3, 'N'),
+('9780679772873', 'The Diary of Anne Frank', 'Anne Frank', 1, 1947, 3, 'N'),
+('9780060007730', 'The Alchemist', 'Paulo Coelho', 1, 1988, 8, 'N'),
+('9781594480003', 'The Kite Runner', 'Khaled Hosseini', 1, 2003, 8, 'N'),
+('9781400031702', 'The Road', 'Cormac McCarthy', 1, 2006, 8, 'N'),
+('9780062409850', 'The Body', 'Bill Bryson', 1, 2019, 1, 'N'),
+('9781932100346', 'The Paleo Diet', 'Loren Cordain', 1, 2002, 1, 'N'),
+('9780060758254', 'Good to Great', 'Jim Collins', 1, 2001, 2, 'N'),
+('9780307887894', 'The Lean Startup', 'Eric Ries', 1, 2011, 2, 'N'),
+('9781118121307', 'The Hard Thing', 'Ben Horowitz', 1, 2014, 2, 'N'),
+('9780201616224', 'The Mythical Man-Month', 'Fred Brooks', 1, 1975, 4, 'N'),
+('9780132350884', 'Clean Code', 'Robert C. Martin', 1, 2008, 4, 'N'),
+('9780465050659', 'The Design of Everyday Things', 'Don Norman', 1, 1988, 4, 'N'),
+('9780205356209', 'The Elements of Style', 'Strunk and White', 1, 1918, 4, 'N'),
+('9780143127714', 'In a Sunburned Country', 'Bill Bryson', 1, 2000, 5, 'N'),
+('9780596520687', 'A Walk in the Woods', 'Bill Bryson', 1, 1998, 5, 'N'),
+('9781847240803', 'Around the World in 80 Days', 'Jules Verne', 1, 1873, 5, 'N'),
+('9780142180538', 'The Art of Travel', 'Alain de Botton', 1, 2002, 5, 'N'),
+('9780062398211', 'Salt, Fat, Acid, Heat', 'Samin Nosrat', 1, 2017, 7, 'N'),
+('9780399501487', 'The Joy of Cooking', 'Irma S. Rombauer', 1, 1931, 7, 'N'),
+('9781416594796', 'The Immortal Life', 'Rebecca Skloot', 1, 2010, 3, 'N'),
+('9780679776210', 'The Diary of a Young Girl', 'Anne Frank', 1, 1947, 3, 'N'),
+('9781501161933', 'The Book of Joy', 'Dalai Lama', 1, 2016, 6, 'N');
 
 -- --------------------------------------------------------
 
